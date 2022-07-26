@@ -40,11 +40,6 @@ const Buscador = ({onChangeFunction}) => {
                             required={true}
                             onChangeFunction={(e) => onChangeFunction(e)}
                         />      
-                        <Button
-                            className={""}
-                            text={"BUscar"}
-                            fullwidth={"is-fullwidth"}
-                        />
                     </div>
                 </div>
             </form>

@@ -16,13 +16,15 @@ const Busqueda = () => {
     },[keyword])
 
     const getApiData = async () => {
-        console.log("volvi a pasar")
         const response = await fetch(
-        `https://localhost:44317/api/news/search?Keyword=${keyword}"&pageSize=${pageSize}`
+        `https://localhost:44317/api/news/search?Keyword=${keyword}&pageSize=${pageSize}`
         ).then((response) => response.json());
 
         console.log(response);
-        setNews(response.articles);
+        if(response.articles != null){
+            setNews(response.articles);
+        }
+
       };
 
       const onChangeFunction = (e) =>{

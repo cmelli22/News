@@ -3,7 +3,7 @@ import Header from './Header'
 import CardContainer from '../Card/CardContainer'
 const Home = () => {
 
-    let[news, setNews] =  useState([]);
+    const[news, setNews] =  useState([]);
     let[pais,setPais] = useState();
 
 
@@ -14,11 +14,13 @@ const Home = () => {
     const getApiData = async () => {
 
         const response = await fetch(
-          "https://localhost:44317/api/news/top-headlines?pageSize=4"
+          "https://localhost:44317/api/news/top-headlines?pageSize=10"
         ).then((response) => response.json());
-
         console.log(response);
-        setNews(response.articles);
+
+        if(response.articles != null){
+            setNews(response.articles);
+        }
       };
 
 

@@ -13,7 +13,7 @@ const Input = ({ name, label, placeholder, type, required, className, onChangeFu
           type={type}
           placeholder={placeholder}
           required={required}
-          onChange={ onChangeFunction != null ? e => onChangeFunction(e) : () => {}}
+          onBlur={ onChangeFunction != null ? e => onChangeFunction(e) : () => {}}
         />
       </div>
     </div>
