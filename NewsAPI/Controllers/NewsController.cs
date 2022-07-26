@@ -18,6 +18,7 @@ namespace NewsAPI.Controllers
         }
 
         [HttpGet]
+        [Route("search")]
         public async Task<IActionResult> Search([FromQuery]SearchRequest request)
         {
             var reply = await _newsServices.GetEverything(request);

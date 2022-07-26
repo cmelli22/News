@@ -11,7 +11,7 @@ namespace Infraestructure.Models
         public string Keyword { get; set; }
         public string dateFrom { get; set; }
         public string dateTo { get; set; }
-        public int page { get; set; }
+        public int? page { get; set; } = 0;
         public int pageSize { get; set; }
 
 

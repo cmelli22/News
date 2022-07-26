@@ -38,13 +38,9 @@ namespace NewsAPI
             {
                 var a = Configuration.GetSection("NewsAPI").GetSection("Endpoint").Value.ToString();
                 httpClient.BaseAddress = new Uri(a);
-
+                httpClient.DefaultRequestHeaders.Clear();
                 httpClient.DefaultRequestHeaders.Add(
-                   "X-Api-Key", Configuration.GetSection("NewsAPI").GetSection("Key").Value.ToString());
-                httpClient.DefaultRequestHeaders.Add(
-                "Connection", "keep-alive");
-                httpClient.DefaultRequestHeaders.Add(
-                "Accept", "*/*");
+                   "X-Api-Key", Configuration.GetSection("NewsAPI").GetSection("Key").Value.ToString().Trim());
             });
 
             services.AddSwaggerGen(c =>
@@ -62,6 +58,12 @@ namespace NewsAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NewsAPI v1"));
             }
+
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials()); // allow credentials
 
             app.UseHttpsRedirection();
 
